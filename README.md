@@ -4,7 +4,7 @@ a custom node for [JoyHallo](https://github.com/jdh-algo/JoyHallo),you can find 
 ## Example
 |audio|image|video|
 |--|--|--|
-||![](./doc/3.jpg)||
+|<video src="https://github.com/user-attachments/assets/a237ab33-f51a-4ce0-9036-f8b29161c40d"/>|![](./doc/3.jpg)|<video src="https://github.com/user-attachments/assets/44eb6fff-66cf-4859-a1cf-12efa4a4b5c0"/>|
 
 ## 教程
 - [一键包](https://b23.tv/nCzSoCe)
