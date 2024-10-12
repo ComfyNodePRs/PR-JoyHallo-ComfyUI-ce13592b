@@ -1,13 +1,13 @@
 {
-  "last_node_id": 4,
-  "last_link_id": 3,
+  "last_node_id": 5,
+  "last_link_id": 6,
   "nodes": [
     {
       "id": 4,
       "type": "PreViewVideo",
       "pos": {
-        "0": 955.2000122070312,
-        "1": 171.20001220703125
+        "0": 991.2000122070312,
+        "1": 160
       },
       "size": {
         "0": 210,
@@ -20,7 +20,7 @@
         {
           "name": "video",
           "type": "VIDEO",
-          "link": 3
+          "link": 6
         }
       ],
       "outputs": [],
@@ -30,61 +30,15 @@
       "widgets_values": []
     },
     {
-      "id": 1,
-      "type": "JoyHalloNode",
+      "id": 2,
+      "type": "LoadAudio",
       "pos": {
-        "0": 515,
-        "1": 184
+        "0": 33,
+        "1": 101
       },
       "size": {
         "0": 315,
-        "1": 150
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "audio",
-          "type": "AUDIO",
-          "link": 1
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "VIDEO",
-          "type": "VIDEO",
-          "links": [
-            3
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "JoyHalloNode"
-      },
-      "widgets_values": [
-        15,
-        3.5,
-        431,
-        "randomize"
-      ]
-    },
-    {
-      "id": 3,
-      "type": "LoadImage",
-      "pos": {
-        "0": 94,
-        "1": 311
-      },
-      "size": {
-        "0": 315,
-        "1": 314
+        "1": 124
       },
       "flags": {},
       "order": 0,
@@ -92,11 +46,46 @@
       "inputs": [],
       "outputs": [
         {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "dingzhen_0.wav",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": {
+        "0": 78,
+        "1": 302
+      },
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            2
-          ]
+            5
+          ],
+          "slot_index": 0
         },
         {
           "name": "MASK",
@@ -113,59 +102,73 @@
       ]
     },
     {
-      "id": 2,
-      "type": "LoadAudio",
+      "id": 5,
+      "type": "JoyHalloNode",
       "pos": {
-        "0": 98,
-        "1": 83
+        "0": 551,
+        "1": 115
       },
       "size": {
         "0": 315,
-        "1": 124
+        "1": 174
       },
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 4
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ],
       "outputs": [
         {
-          "name": "AUDIO",
-          "type": "AUDIO",
+          "name": "VIDEO",
+          "type": "VIDEO",
           "links": [
-            1
-          ]
+            6
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
-        "Node name for S&R": "LoadAudio"
+        "Node name for S&R": "JoyHalloNode"
       },
       "widgets_values": [
-        "0.wav",
-        null,
-        ""
+        15,
+        3.5,
+        true,
+        792,
+        "randomize"
       ]
     }
   ],
   "links": [
     [
-      1,
+      4,
       2,
       0,
-      1,
+      5,
       0,
       "AUDIO"
     ],
     [
-      2,
+      5,
       3,
       0,
-      1,
+      5,
       1,
       "IMAGE"
     ],
     [
-      3,
-      1,
+      6,
+      5,
       0,
       4,
       0,
@@ -176,10 +179,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1,
+      "scale": 0.9090909090909091,
       "offset": [
-        0,
-        0.79998779296875
+        65.20000000000005,
+        48.89999999999998
       ]
     }
   },
