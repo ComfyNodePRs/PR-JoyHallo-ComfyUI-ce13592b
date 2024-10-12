@@ -21,7 +21,7 @@ opencv-python
 pillow
 tqdm
 transformers
-xformers
+# xformers
 isort
 pylint
 pre-commit

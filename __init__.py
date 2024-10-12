@@ -32,6 +32,9 @@ class JoyHalloNode:
                 "cfg_scale":("FLOAT",{
                     "default":3.5
                 }),
+                "if_fp8":("BOOLEAN",{
+                    "default":True,
+                }),
                 "seed":("INT",{
                     "default":42
                 }),
@@ -47,7 +50,7 @@ class JoyHalloNode:
 
     CATEGORY = "AIFSH_JoyHallo"
 
-    def gen_video(self,audio,image,inference_steps,cfg_scale,seed):
+    def gen_video(self,audio,image,inference_steps,cfg_scale,if_fp8,seed):
         config = load_config(config_file)
         config.inference_steps = inference_steps
         config.cfg_scale = cfg_scale
@@ -63,24 +66,9 @@ class JoyHalloNode:
         config.wav2vec_config.model_path = wav2vec_dir
 
         config.audio_separator.model_path = osp.join(audio_separator_dir,"Kim_Vocal_2.onnx")
-        if not osp.exists(config.audio_separator.model_path):
-            hf_hub_download(repo_id="seanghay/uvr_models",
-                              local_dir=audio_separator_dir,
-                              filename="Kim_Vocal_2.onnx")
         
-        '''
-        if not osp.exists(osp.join(base_model_path,"unet","diffusion_pytorch_model.fp16.safetensors")):
-            snapshot_download(repo_id="stable-diffusion-v1-5/stable-diffusion-v1-5",
-                              local_dir=base_model_path,
-                              allow_patterns=["*fp16*","*json","*txt"])
-        '''
         config.base_model_path = base_model_path
-        '''
-        if not osp.exists(osp.join(vae_model_path,"diffusion_pytorch_model.safetensors")):
-            snapshot_download(repo_id="stabilityai/sd-vae-ft-mse",
-                              local_dir=vae_model_path,
-                              allow_patterns=["*safetensors","*json"])
-        '''
+        
         config.vae_model_path = vae_model_path
 
         config.face_analysis_model_path = osp.join(pretrained_dir,"face_analysis")
@@ -105,6 +93,7 @@ class JoyHalloNode:
         config.ref_img_path = [ref_img_path]
         config.audio_path = [audio_path]
         config.data.train_meta_paths = [osp.join(now_dir,"inference.json")]
+        config.if_fp8 = if_fp8
         print(config)
         inference_process(config)
         tmp_output_file = osp.join(save_dir,"0_refimg_audio.mp4")
@@ -112,10 +101,7 @@ class JoyHalloNode:
         shutil.copy(tmp_output_file,output_file)
         return (output_file,)
 
-WEB_DIRECTORY = "./js"
-from .util_nodes import LoadVideo, PreViewVideo
+
 NODE_CLASS_MAPPINGS = {
-    "LoadVideo": LoadVideo,
-    "PreViewVideo":PreViewVideo,
     "JoyHalloNode": JoyHalloNode
 }

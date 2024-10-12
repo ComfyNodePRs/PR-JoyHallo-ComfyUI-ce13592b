@@ -535,6 +535,9 @@ def inference_process(cfg: argparse.Namespace) -> None:
     )
     assert len(m) == 0 and len(u) == 0, "Fail to load correct checkpoint."
     print("loaded weight from ", os.path.join(cfg.audio_ckpt_dir))
+    if cfg.if_fp8:
+        from .fp8_optimization import convert_fp8_linear
+        convert_fp8_linear(net,original_dtype=torch.bfloat16)
 
     # get noise scheduler
     _, val_noise_scheduler = get_noise_scheduler(cfg)
