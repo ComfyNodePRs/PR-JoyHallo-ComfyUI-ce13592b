@@ -3,7 +3,8 @@ import folder_paths
 import os.path as osp
 now_dir = osp.dirname(osp.abspath(__file__))
 config_file = osp.join(now_dir, "inference.yaml")
-pretrained_dir = osp.join(folder_paths.models_dir,"AIFSH","JoyHallo")
+aifsh_dir = osp.join(folder_paths.models_dir,"AIFSH")
+pretrained_dir = osp.join(aifsh_dir,"HALLO")
 wav2vec_dir = osp.join(pretrained_dir,"chinese-wav2vec2-base")
 audio_separator_dir = osp.join(pretrained_dir,"audio_separator")
 base_model_path = osp.join(pretrained_dir,"stable-diffusion-v1-5")
@@ -32,7 +33,7 @@ class JoyHalloNode:
                     "default":3.5
                 }),
                 "if_fp8":("BOOLEAN",{
-                    "default":True,
+                    "default":False,
                 }),
                 "seed":("INT",{
                     "default":42

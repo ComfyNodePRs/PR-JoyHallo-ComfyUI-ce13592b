@@ -29,7 +29,7 @@ from tqdm.auto import tqdm
 
 import sys
 sys.path.append(os.path.dirname(__file__))
-
+from comfy.utils import ProgressBar
 from joyhallo.animate.face_animate import FaceAnimatePipeline
 from joyhallo.datasets.audio_processor import AudioProcessor
 from joyhallo.datasets.image_processor import ImageProcessor
@@ -330,6 +330,7 @@ def log_validation(
 
         times = audio_emb.shape[0] // clip_length
         tensor_result = []
+        comfy_bar = ProgressBar(times)
         for t in range(times):
             print(f"[{t+1}/{times}]")
 
@@ -378,6 +379,7 @@ def log_validation(
             )
 
             tensor_result.append(pipeline_output.videos)
+            comfy_bar.update(1)
 
         tensor_result = torch.cat(tensor_result, dim=2)
         tensor_result = tensor_result.squeeze(0)

@@ -343,6 +343,10 @@ def compute_face_landmarks(detection_result, h, w):
         return []
     return [[p.x * w, p.y * h] for p in face_landmarks_list[0]]
 
+import folder_paths
+import os.path as osp
+aifsh_dir = osp.join(folder_paths.models_dir,"AIFSH")
+hallo_dir = osp.join(aifsh_dir,"HALLO")
 
 def get_landmark(file):
     """
@@ -354,8 +358,7 @@ def get_landmark(file):
     Returns:
         Tuple[List[float], List[float]]: A tuple containing two lists of floats representing the x and y coordinates of the facial landmarks.
     """
-    now_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    model_path = os.path.join(now_dir,"..","pretrained_models/face_analysis/models/face_landmarker_v2_with_blendshapes.task")
+    model_path = osp.join(hallo_dir,"face_analysis/models/face_landmarker_v2_with_blendshapes.task")    
     BaseOptions = mp.tasks.BaseOptions
     FaceLandmarker = mp.tasks.vision.FaceLandmarker
     FaceLandmarkerOptions = mp.tasks.vision.FaceLandmarkerOptions
