@@ -8,6 +8,8 @@ a custom node for [JoyHallo](https://github.com/jdh-algo/JoyHallo),you can find 
 ## Weights
 weights will be download from hf automaticlly,对于国内用户，你可以手动下载解压后把HALLO文件夹放到ComfyUI/models/AIFSH目录下面,[下载地址](https://pan.quark.cn/s/9052b4c7c98e)
 
+## Disclaimer / 免责声明
+We do not hold any responsibility for any illegal usage of the codebase. Please refer to your local laws about DMCA and other related laws. 我们不对代码库的任何非法使用承担任何责任. 请参阅您当地关于 DMCA (数字千年法案) 和其他相关法律法规.
 ## Example
 |audio|image|video|
 |--|--|--|
